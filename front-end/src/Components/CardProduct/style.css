@@ -20,4 +20,6 @@
 
 .container-title-product h3 {
     padding-bottom: 2px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
 }

@@ -40,10 +40,16 @@
     width: 13%;
 }
 
+
+.orders-table td:nth-of-type(7) {
+    width: 13%;
+}
+
 .orders-table td:nth-of-type(5),
 .orders-table td:nth-of-type(2),
 .orders-table td:nth-of-type(4),
 .orders-table td:nth-of-type(6),
+.orders-table td:nth-of-type(8),
 .orders-table td:nth-of-type(7),
 .orders-table td:last-of-type {
     text-align: center;

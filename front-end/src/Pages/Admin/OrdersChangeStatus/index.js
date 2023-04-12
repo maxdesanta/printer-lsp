@@ -2,12 +2,16 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+// import helper
+import { ConvertRupiah } from "../../../Helper/ConvertRupiah";
+
 // import css
 import "./style.css";
 
 export default function OrdersChangeStatus() {
   // bahan
   const [orderDetail, setOrderDetail] = useState();
+  const [nol, setNol] = useState(0);
   const token = localStorage.getItem("Authorization");
   const push = useNavigate();
   const { id } = useParams();
@@ -41,6 +45,7 @@ export default function OrdersChangeStatus() {
           },
         }
       );
+      console.log(response);
       push("/orders");
     } catch (err) {
       console.log(err);
@@ -74,8 +79,12 @@ export default function OrdersChangeStatus() {
                 <p>Nama Produk</p>
                 <p>:</p>
               </div>
+              <div className="total-point wrapper">
+                <p>Jumlah</p>
+                <p>:</p>
+              </div>
               <div className="harga-point wrapper">
-                <p>Harga</p>
+                <p>Total Harga</p>
                 <p>:</p>
               </div>
               <div className="status-point wrapper">
@@ -96,8 +105,11 @@ export default function OrdersChangeStatus() {
               <div className="produk-content wrapper">
                 <p>{orderDetail.nama_produk}</p>
               </div>
+              <div className="total-content wrapper">
+                <p>{orderDetail.jumlah_produk}</p>
+              </div>
               <div className="harga-content wrapper">
-                <p>{orderDetail.harga_produk}</p>
+                <p>{ConvertRupiah(orderDetail.total_harga)}</p>
               </div>
               <div className="status-content wrapper">
                 <p>{orderDetail.status}</p>

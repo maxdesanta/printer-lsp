@@ -15,11 +15,15 @@ export default function Transaction() {
   // bahan
   const [receive, setReceive] = useState("");
   const [destination, setDestination] = useState("");
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState("");
+  const [priceChange, setPriceChange] = useState("");
+  const [isPrice, setIsPrice] = useState(false);
+  const [amountP, setAmountP] = useState(1);
+
   const token = localStorage.getItem("Authorization");
   const { id } = useParams();
   const push = useNavigate();
-    
+
   // proses ambil total harga
   async function totalAmount() {
     try {
@@ -28,6 +32,7 @@ export default function Transaction() {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(res.data.message.harga_produk);
       setPrice(res.data.message);
     } catch (err) {
       console.log(err);
@@ -43,6 +48,7 @@ export default function Transaction() {
         {
           nama_penerima: receive,
           alamat_tujuan: destination,
+          total_product: amountP,
         },
         {
           headers: {
@@ -53,6 +59,19 @@ export default function Transaction() {
       push(`/product/transaction/success`);
     } catch (err) {
       console.error(err);
+    }
+  }
+
+  // proses tambah kurang produk
+  async function tambahKurang(pm) {
+    if (pm === "+") {
+      setAmountP((prevAmount) => prevAmount + 1);
+      setPriceChange((amountP + 1) * price.harga_produk);
+      setIsPrice(true);
+
+    } else if (pm === "-" && amountP > 1) {
+      setAmountP((prevAmount) => prevAmount - 1);
+      setPriceChange(priceChange - price.harga_produk);
     }
   }
 
@@ -86,10 +105,22 @@ export default function Transaction() {
             />
           </div>
         </div>
+        <div className="order-amount wrapper">
+          <label for="desc">Jumlah yang di beli :</label>
+          <div className="amount-btn wrapper">
+            <div className="amount-btn-plus" onClick={() => tambahKurang("+")}>
+              <p>+</p>
+            </div>
+            <div className="amount-number">{amountP}</div>
+            <div className="amount-btn-minus" onClick={() => tambahKurang("-")}>
+              <p>-</p>
+            </div>
+          </div>
+        </div>
         {price && (
           <div className="total-payment">
             <h3>Total :</h3>
-            <h3>{ConvertRupiah(price.harga_produk)}</h3>
+            <h3>{!isPrice ? ConvertRupiah(price.harga_produk) : ConvertRupiah(priceChange)}</h3>
           </div>
         )}
         <Button className="btn-order" textbtn="Send" accept="submit" />

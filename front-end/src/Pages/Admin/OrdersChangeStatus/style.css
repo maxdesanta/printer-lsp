@@ -25,7 +25,7 @@
 }
 
 
-.tgl-point.wrapper, .customer-point.wrapper, .alamat-point.wrapper, .produk-point.wrapper, .harga-point.wrapper, .status-point.wrapper {
+.tgl-point.wrapper, .customer-point.wrapper, .alamat-point.wrapper, .produk-point.wrapper, .harga-point.wrapper, .status-point.wrapper, .total-point.wrapper {
     justify-content: space-between;
     width: 250px;
     padding-right: 10px;

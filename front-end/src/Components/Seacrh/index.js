@@ -7,7 +7,7 @@ import './style.css';
 // import icon
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-export default function Search({resultSearch, inputSearch ,formulaResult}) {
+export default function Search({ resultSearch, inputSearch, formulaResult }) {
   return (
     <div className="search">
       <input
@@ -15,8 +15,8 @@ export default function Search({resultSearch, inputSearch ,formulaResult}) {
         placeholder="search"
         value={resultSearch}
         onChange={inputSearch}
-        onKeyDown={(e) =>
-          e.key === "Enter" ? {formulaResult} : null
+        onKeyDown={(event) =>
+          event.key === "Enter" ? formulaResult(resultSearch) : null
         }
       />
       <FontAwesomeIcon

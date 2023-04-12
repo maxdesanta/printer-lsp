@@ -73,14 +73,10 @@ export default function Product() {
     getDataProduct();
   }, [token]);
 
-  useEffect(() => {
-    setSearchP(searchP);
-  }, [searchP])
-
   return (
     <div className="product">
       <div className="container">
-        <Search resultSearch={searchP} inputSearch={e => setSearchP(e.target.value)} formulaResult={searchProductResult(searchP)} />
+        <Search resultSearch={searchP} inputSearch={e => setSearchP(e.target.value)} formulaResult={searchProductResult} />
         <div className="add-product">
           <Link to="/products/add">
             <FontAwesomeIcon

@@ -4,8 +4,9 @@ import axios from "axios";
 // import css
 import "./style.css";
 
-// import css
+// import component
 import Search from "../../../Components/Seacrh";
+
 
 export default function Customer() {
   // bahan
@@ -43,13 +44,9 @@ export default function Customer() {
     getDataCustomers();
   }, [token]);
 
-  useEffect(() => {
-    searchCustomerResult(searchC);
-  }, [searchC]);
-
   return (
     <div className="user">
-      <Search resultSearch={searchC} inputSearch={e => setSearchC(e.target.value)} formulaResult={searchCustomerResult(searchC)} />
+      <Search resultSearch={searchC} inputSearch={(e) => setSearchC(e.target.value)} formulaResult={searchCustomerResult} />
       <div className="user-table">
         <table>
           <tr>

@@ -25,6 +25,10 @@
     border: 1px solid black;
 }
 
+.product-table td img {
+    width: 130px;
+}
+
 .product-table td:nth-of-type(5),
 .product-table td:nth-of-type(2),
 .product-table td:nth-of-type(4),
@@ -37,5 +41,5 @@
 }
 
 .product-table td:first-of-type {
-    width: 35%;
+    width: 25%;
 }

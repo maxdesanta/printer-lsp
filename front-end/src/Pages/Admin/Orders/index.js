@@ -71,6 +71,7 @@ export default function Orders() {
             <th>Alamat</th>
             <th>Produk</th>
             <th>Gambar</th>
+            <th>Jumlah</th>
             <th>Harga</th>
             <th>Status</th>
             <th>Action</th>
@@ -84,7 +85,8 @@ export default function Orders() {
               <td>
                 <img src={data.url_gambar} alt={data.gambar} />
               </td>
-              <td>{ConvertRupiah(data.harga_produk)}</td>
+              <td>{data.jumlah_produk}</td>
+              <td>{ConvertRupiah(data.total_harga)}</td>
               <td>{data.status}</td>
               <td>
                 {data.status === "accept" ? (
