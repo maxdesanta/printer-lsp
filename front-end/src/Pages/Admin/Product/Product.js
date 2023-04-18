@@ -23,6 +23,7 @@ export default function Product() {
   // bahan
   const [datas, setDatas] = useState([]);
   const [searchP, setSearchP] = useState("");
+  const [checkEmpty, setCheckEmpty] = useState("habis");
   const token = localStorage.getItem("Authorization");
 
   // proses get data
@@ -104,7 +105,7 @@ export default function Product() {
               </td>
               <td>{data.deskripsi}</td>
               <td>{ConvertRupiah(data.harga_produk)}</td>
-              <td>{data.stok}</td>
+              <td>{data.stok == 0 ? checkEmpty : data.stok}</td>
               <td>
                 <Link to={`/products/edit/${data.id_produk}`}>
                   <FontAwesomeIcon

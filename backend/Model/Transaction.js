@@ -63,7 +63,7 @@ class TransactionModel {
   // show detail transaction
   static async ShowTransationByIdModel(id) {
     const sqlQuery =
-      "SELECT transaksi.id, transaksi.tanggal_transaksi, transaksi.nama_penerima, transaksi.alamat_tujuan, printer.nama_produk, transaksi.jumlah_produk, transaksi.total_harga, printer.gambar, printer.url_gambar, transaksi.status FROM transaksi INNER JOIN printer ON transaksi.id_produk = printer.id_produk INNER JOIN person ON transaksi.id_user = person.id WHERE transaksi.id = 2;";
+      "SELECT transaksi.id, transaksi.tanggal_transaksi, transaksi.nama_penerima, transaksi.alamat_tujuan, printer.nama_produk, transaksi.jumlah_produk, transaksi.total_harga, printer.gambar, printer.url_gambar, transaksi.status FROM transaksi INNER JOIN printer ON transaksi.id_produk = printer.id_produk INNER JOIN person ON transaksi.id_user = person.id WHERE transaksi.id = ?";
 
     try {
       const response = await connectSql(sqlQuery, [id]);

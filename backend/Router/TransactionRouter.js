@@ -17,7 +17,7 @@ const {
 transactionRouter.get("/transaction", auth ,TransactionController.ShowAllTransactionsController);
 
 // detail transaksi
-transactionRouter.get("/transaction/:id", auth, TransactionController.ShowTransationByIdController);
+transactionRouter.get("/transaction/:id", TransactionController.ShowTransationByIdController);
 
 // membuat pesanan
 transactionRouter.put("/transaction/:id", auth, TransactionController.UpdateStatusTransactionController)

@@ -11,7 +11,6 @@ import "./style.css";
 export default function OrdersChangeStatus() {
   // bahan
   const [orderDetail, setOrderDetail] = useState();
-  const [nol, setNol] = useState(0);
   const token = localStorage.getItem("Authorization");
   const push = useNavigate();
   const { id } = useParams();
@@ -24,7 +23,7 @@ export default function OrdersChangeStatus() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res.data.message);
+      console.log(res.status);
       setOrderDetail(res.data.message);
     } catch (err) {
       console.log(err);
